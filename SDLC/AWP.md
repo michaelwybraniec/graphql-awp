@@ -127,6 +127,7 @@
     - [ ] 1.2: Set up project structure with PostGraphile
     - [ ] 1.3: Create initial project documentation
     - [ ] 1.4: Set up development environment
+    - [x] 1.5: init a first Commit to Git repository
 
 - [ ] 2. GraphQL Schema Design
     - [ ] 2.1: Define initial GraphQL schema
