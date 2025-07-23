@@ -120,51 +120,201 @@
 
 18. **auto_handoff:**  true
 
-## Steps
+## Project Backlog
 
 - [ ] 1. Project Initialization
     - [x] 1.1: Create initial README.md based on the project objectives written in AWP.md"
     - [ ] 1.2: Set up project structure with PostGraphile
+        - [x] 1.2.1: Choose the project structure (monorepo, single repo, folder layout, etc.)
+            - Task: Evaluate and select the optimal project structure for a PostGraphile-based GraphQL API with a demo client
+            - Options considered: Single-repo, Monorepo, Backend-with-client-subfolder
+            - Decision: Backend-focused structure with client subfolder for clear separation
+        - [x] 1.2.2: Initialize the project (e.g., npm/yarn init, set up package.json)
+            - Task: Create the basic folder structure and initialize Node.js projects
+            - Actions: Create /api and /client directories, run npm init -y in each
+            - Outcome: Both directories have package.json with default values
+        - [ ] 1.2.3: Install PostGraphile and required dependencies
+            - Task: Install core PostGraphile dependencies in the /api folder
+            - Dependencies to install: postgraphile (GraphQL API generator), pg (PostgreSQL client)
+            - Command: npm install postgraphile pg
+            - Purpose: Enable automatic GraphQL schema generation from PostgreSQL
+        - [ ] 1.2.4: Set up a basic server entry point (e.g., index.js/ts)
+            - Task: Create the main server file that will run PostGraphile
+            - File: /api/src/index.js or /api/index.js
+            - Content: Basic Express server with PostGraphile middleware
+            - Purpose: Provide a working server that can start and serve GraphQL API
+        - [ ] 1.2.5: Create a folder for database seed and config files
+            - Task: Organize database-related files and configurations
+            - Folders to create: /api/db, /api/config
+            - Files: Database connection config, seed data structure
+            - Purpose: Separate database concerns and prepare for data seeding
+        - [ ] 1.2.6: Add a placeholder for the GraphQL schema (if needed)
+            - Task: Create structure for custom GraphQL schema extensions
+            - Folder: /api/schema or /api/graphql
+            - Purpose: Prepare for custom resolvers or schema modifications beyond PostGraphile's auto-generation
+        - [ ] 1.2.7: Add scripts to start the server and run PostGraphile
+            - Task: Update package.json with useful npm scripts
+            - Scripts: "start", "dev", "build" (if needed)
+            - Purpose: Provide easy commands to run the development server
+        - [ ] 1.2.8: Update README.md to reflect the new structure and setup instructions
+            - Task: Document the project structure and how to get started
+            - Content: Folder structure explanation, setup steps, basic usage
+            - Purpose: Ensure anyone can understand and run the project
+        - [ ] 1.2.9: Commit the initial project structure
+            - Task: Save all changes to git with appropriate commit message
+            - Message format: feat(structure 1.2.x): description of changes
+            - Purpose: Track progress and maintain version control
     - [ ] 1.3: Create initial project documentation
+        - Task: Create comprehensive documentation for the project setup and development process
+        - Files to create: CONTRIBUTING.md, DEVELOPMENT.md, API.md
+        - Content: Development guidelines, API documentation, contribution workflow
+        - Purpose: Ensure team members and contributors understand how to work with the project
     - [ ] 1.4: Set up development environment
+        - Task: Configure development tools and environment variables
+        - Actions: Set up .env files, configure linting (ESLint), add .gitignore
+        - Files: .env.example, .eslintrc.js, .gitignore
+        - Purpose: Ensure consistent development environment across team members
     - [x] 1.5: init a first Commit to Git repository
+        - Task: Initialize git repository and make first commit
+        - Actions: git init, git add, git commit
+        - Purpose: Establish version control and track project history
 
 - [ ] 2. GraphQL Schema Design
     - [ ] 2.1: Define initial GraphQL schema
+        - Task: Design the core GraphQL schema structure for the application
+        - Actions: Define types, queries, mutations, and subscriptions
+        - Files: /api/schema/schema.graphql or database schema files
+        - Purpose: Establish the foundation for all GraphQL operations
     - [ ] 2.2: Document schema structure
+        - Task: Create comprehensive documentation for the GraphQL schema
+        - Actions: Document types, fields, arguments, and relationships
+        - Files: /docs/schema.md, GraphQL documentation
+        - Purpose: Help developers understand and use the API effectively
     - [ ] 2.3: Create JSON seed data
+        - Task: Generate sample data for development and testing
+        - Actions: Create JSON files with realistic test data
+        - Files: /api/db/seed-data.json, /api/db/seed.js
+        - Purpose: Provide consistent test data and enable development without live data
     - [ ] 2.4: Set up database connection
+        - Task: Configure PostgreSQL connection and database setup
+        - Actions: Set up connection pool, configure environment variables
+        - Files: /api/config/database.js, .env files
+        - Purpose: Enable PostGraphile to connect to and read from PostgreSQL
 
 - [ ] 3. Authentication & Authorization
     - [ ] 3.1: Implement authentication mechanism
+        - Task: Set up user authentication system using PostgreSQL and JWT
+        - Actions: Implement login/logout, JWT token generation, password hashing
+        - Files: /api/auth/auth.js, /api/middleware/auth.js
+        - Purpose: Secure the API and identify authenticated users
     - [ ] 3.2: Add basic authorization checks
+        - Task: Implement role-based access control and permission checks
+        - Actions: Create authorization middleware, check user permissions
+        - Files: /api/middleware/authorization.js, /api/config/permissions.js
+        - Purpose: Control access to different API endpoints based on user roles
     - [ ] 3.3: Create user roles and permissions
+        - Task: Define user roles and their associated permissions
+        - Actions: Create role definitions, permission mappings, database tables
+        - Files: /api/db/migrations/roles.sql, /api/config/roles.js
+        - Purpose: Establish clear permission structure for different user types
 
 - [ ] 4. API Development
     - [ ] 4.1: Implement GraphQL resolvers
+        - Task: Create custom resolvers for complex business logic beyond PostGraphile's auto-generation
+        - Actions: Implement custom resolvers, optimize query performance
+        - Files: /api/resolvers/, /api/schema/resolvers.js
+        - Purpose: Handle complex queries and business logic not covered by PostGraphile
     - [ ] 4.2: Add input validation
+        - Task: Implement comprehensive input validation for all GraphQL operations
+        - Actions: Add validation middleware, create validation schemas
+        - Files: /api/validation/, /api/middleware/validation.js
+        - Purpose: Ensure data integrity and prevent invalid data from entering the system
     - [ ] 4.3: Create error handling mechanisms
+        - Task: Implement robust error handling and logging throughout the API
+        - Actions: Create error classes, implement error middleware, add logging
+        - Files: /api/errors/, /api/middleware/error-handler.js
+        - Purpose: Provide clear error messages and maintain system stability
 
 - [ ] 5. Testing
     - [ ] 5.1: Set up testing framework
+        - Task: Configure testing environment with Jest and GraphQL testing tools
+        - Actions: Install testing dependencies, configure Jest, set up test database
+        - Files: /api/jest.config.js, /api/tests/setup.js
+        - Purpose: Enable automated testing of GraphQL schema and resolvers
     - [ ] 5.2: Write unit tests for schema
+        - Task: Create comprehensive unit tests for GraphQL schema validation
+        - Actions: Test type definitions, field resolvers, schema introspection
+        - Files: /api/tests/schema/, /api/tests/unit/
+        - Purpose: Ensure schema integrity and catch breaking changes early
     - [ ] 5.3: Write resolver tests
+        - Task: Test custom resolvers and business logic
+        - Actions: Mock dependencies, test resolver functions, validate outputs
+        - Files: /api/tests/resolvers/, /api/tests/mocks/
+        - Purpose: Verify resolver behavior and prevent regressions
     - [ ] 5.4: Create integration tests
+        - Task: Test complete API workflows and end-to-end scenarios
+        - Actions: Test authentication flows, database operations, error scenarios
+        - Files: /api/tests/integration/, /api/tests/e2e/
+        - Purpose: Ensure the entire system works together correctly
 
 - [ ] 6. Client Application
     - [ ] 6.1: Develop simple client to demonstrate API
+        - Task: Create a basic web client to showcase and test the GraphQL API
+        - Actions: Set up React/Vue.js project, configure GraphQL client (Apollo Client)
+        - Files: /client/src/, /client/package.json, /client/graphql/
+        - Purpose: Provide a user-friendly interface to test and demonstrate API functionality
     - [ ] 6.2: Implement basic UI
+        - Task: Create user interface components for API interaction
+        - Actions: Build forms, data display components, navigation
+        - Files: /client/src/components/, /client/src/pages/
+        - Purpose: Enable users to interact with the API through a visual interface
     - [ ] 6.3: Test API interactions
+        - Task: Verify client can successfully communicate with the GraphQL API
+        - Actions: Test queries, mutations, error handling, authentication
+        - Files: /client/src/tests/, /client/cypress/ (if using Cypress)
+        - Purpose: Ensure the client application works correctly with the API
 
 - [ ] 7. Documentation
     - [ ] 7.1: Generate API documentation
+        - Task: Create comprehensive API documentation with examples and usage guides
+        - Actions: Generate GraphQL documentation, create API reference, add examples
+        - Files: /docs/api.md, /docs/examples/, GraphQL Playground setup
+        - Purpose: Help developers understand and integrate with the API
     - [ ] 7.2: Create README with setup instructions
+        - Task: Update main README with complete setup and usage instructions
+        - Actions: Add installation steps, configuration guide, usage examples
+        - Files: README.md, /docs/setup.md
+        - Purpose: Enable new developers to quickly get started with the project
     - [ ] 7.3: Document deployment process
+        - Task: Create deployment guides for different environments
+        - Actions: Document production deployment, environment configuration, CI/CD setup
+        - Files: /docs/deployment.md, /docs/environment.md
+        - Purpose: Ensure smooth deployment to production and staging environments
 
 - [ ] 8. CI/CD & Deployment
     - [ ] 8.1: Set up CI/CD workflows
+        - Task: Configure automated testing, linting, and deployment pipelines
+        - Actions: Set up GitHub Actions, configure automated testing, add deployment scripts
+        - Files: /.github/workflows/, /scripts/deploy.sh
+        - Purpose: Automate quality checks and deployment processes
     - [ ] 8.2: Configure deployment environment
+        - Task: Set up production and staging deployment environments
+        - Actions: Configure hosting platform (Heroku, AWS, etc.), set up environment variables
+        - Files: /config/production.js, /config/staging.js, deployment scripts
+        - Purpose: Enable reliable and repeatable deployments
     - [ ] 8.3: Add basic logging and monitoring
+        - Task: Implement application logging and basic monitoring
+        - Actions: Add logging middleware, configure monitoring tools, set up error tracking
+        - Files: /api/middleware/logging.js, /api/config/monitoring.js
+        - Purpose: Monitor application health and debug issues in production
+
+## Unplanned Tasks
+
+1. **Detailed Task Descriptions Added (2024-01-XX)**
+   - Added comprehensive task descriptions for all steps in sections 1-8
+   - Each task now includes: Task description, Actions, Files, and Purpose
+   - Provides complete visibility and control over development process
+   - Enables ultimate insight into what each step involves and why it's necessary
 
 ## Notes
 
@@ -228,7 +378,7 @@
 
     3.3. Check for blockers before proceeding, and confirm additional plan with human.
 
-    3.4. Mark the current step as done before you start.
+    3.4. Mark the current step 'check' [ ] as done before you start.
 
 4. **check**
 
